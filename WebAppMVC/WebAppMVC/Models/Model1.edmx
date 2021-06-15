@@ -1,0 +1,742 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Sports_Zone_DbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Account_Details">
+          <Key>
+            <PropertyRef Name="AccName" />
+          </Key>
+          <Property Name="AccName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AccPassword" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="AccPhone" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="AccAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AccEmail" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdmId" />
+          </Key>
+          <Property Name="AdmId" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="AdmName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AdmEmail" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="AdmPassword" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="CarId" />
+          </Key>
+          <Property Name="CarId" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="ProId" Type="nvarchar" MaxLength="10" />
+          <Property Name="CusId" Type="varchar" MaxLength="20" />
+          <Property Name="Quantity" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="CatId" />
+          </Key>
+          <Property Name="CatId" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="CatName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProId" Type="nvarchar" MaxLength="10" />
+          <Property Name="catDescription" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer_info">
+          <Key>
+            <PropertyRef Name="CusId" />
+          </Key>
+          <Property Name="CusId" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="First_Name" Type="varchar" MaxLength="20" />
+          <Property Name="Last_Name" Type="varchar" MaxLength="20" />
+          <Property Name="Phone" Type="varchar" MaxLength="10" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="CusId" />
+          </Key>
+          <Property Name="CusId" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ProId" Type="nvarchar" MaxLength="10" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="300" />
+          <Property Name="Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Orders_Details">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="CusId" Type="varchar" MaxLength="20" />
+          <Property Name="OrderDate" Type="datetime" />
+          <Property Name="ShippedDate" Type="datetime" Nullable="false" />
+          <Property Name="ShipName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ShipAddress" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ShipCity" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ShipPostalCode" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="Payment_Id" />
+          </Key>
+          <Property Name="Payment_Id" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="CusId" Type="varchar" MaxLength="20" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+          <Property Name="Payment_Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProId" />
+          </Key>
+          <Property Name="ProId" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="ProName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProDescription" Type="nvarchar" MaxLength="200" />
+          <Property Name="ProPrice" Type="money" />
+          <Property Name="Stock" Type="int" />
+        </EntityType>
+        <EntityType Name="Sports_Info">
+          <Key>
+            <PropertyRef Name="SpoId" />
+          </Key>
+          <Property Name="SpoId" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="SpoName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SpoCategory" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SpoGears" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SpoDescription" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserLogin">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="20" />
+          <Property Name="first_name" Type="varchar" MaxLength="20" />
+          <Property Name="last_name" Type="varchar" MaxLength="20" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="UserAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserMobile" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK__Cart__CusId__32AB8735">
+          <End Role="Customer_info" Type="Self.Customer_info" Multiplicity="0..1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer_info">
+              <PropertyRef Name="CusId" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="CusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cart__ProId__339FAB6E">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProId" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="ProId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Categorie__ProId__60A75C0F">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Categories" Type="Self.Categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProId" />
+            </Principal>
+            <Dependent Role="Categories">
+              <PropertyRef Name="ProId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Customer___CusId__2645B050">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Customer_info" Type="Self.Customer_info" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="Customer_info">
+              <PropertyRef Name="CusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Feedback__CusId__2DE6D218">
+          <End Role="Customer_info" Type="Self.Customer_info" Multiplicity="1" />
+          <End Role="Feedback" Type="Self.Feedback" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Customer_info">
+              <PropertyRef Name="CusId" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="CusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Feedback__ProId__2EDAF651">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProId" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="ProId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders_De__CusId__395884C4">
+          <End Role="Customer_info" Type="Self.Customer_info" Multiplicity="0..1" />
+          <End Role="Orders_Details" Type="Self.Orders_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer_info">
+              <PropertyRef Name="CusId" />
+            </Principal>
+            <Dependent Role="Orders_Details">
+              <PropertyRef Name="CusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Payment__CusId__367C1819">
+          <End Role="Customer_info" Type="Self.Customer_info" Multiplicity="0..1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer_info">
+              <PropertyRef Name="CusId" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="CusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserLogin__UserI__3F115E1A">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="UserLogin">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Sports_Zone_DbModelStoreContainer">
+          <EntitySet Name="Account_Details" EntityType="Self.Account_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer_info" EntityType="Self.Customer_info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Feedback" EntityType="Self.Feedback" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders_Details" EntityType="Self.Orders_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sports_Info" EntityType="Self.Sports_Info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserLogin" EntityType="Self.UserLogin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Cart__CusId__32AB8735" Association="Self.FK__Cart__CusId__32AB8735">
+            <End Role="Customer_info" EntitySet="Customer_info" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cart__ProId__339FAB6E" Association="Self.FK__Cart__ProId__339FAB6E">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Categorie__ProId__60A75C0F" Association="Self.FK__Categorie__ProId__60A75C0F">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Categories" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Customer___CusId__2645B050" Association="Self.FK__Customer___CusId__2645B050">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Customer_info" EntitySet="Customer_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Feedback__CusId__2DE6D218" Association="Self.FK__Feedback__CusId__2DE6D218">
+            <End Role="Customer_info" EntitySet="Customer_info" />
+            <End Role="Feedback" EntitySet="Feedback" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Feedback__ProId__2EDAF651" Association="Self.FK__Feedback__ProId__2EDAF651">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Feedback" EntitySet="Feedback" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders_De__CusId__395884C4" Association="Self.FK__Orders_De__CusId__395884C4">
+            <End Role="Customer_info" EntitySet="Customer_info" />
+            <End Role="Orders_Details" EntitySet="Orders_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Payment__CusId__367C1819" Association="Self.FK__Payment__CusId__367C1819">
+            <End Role="Customer_info" EntitySet="Customer_info" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserLogin__UserI__3F115E1A" Association="Self.FK__UserLogin__UserI__3F115E1A">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserLogin" EntitySet="UserLogin" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Sports_Zone_DbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account_Details">
+          <Key>
+            <PropertyRef Name="AccName" />
+          </Key>
+          <Property Name="AccName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AccPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AccPhone" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AccAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AccEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdmId" />
+          </Key>
+          <Property Name="AdmId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AdmName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AdmEmail" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AdmPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="CarId" />
+          </Key>
+          <Property Name="CarId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CusId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Quantity" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Customer_info" Relationship="Self.FK__Cart__CusId__32AB8735" FromRole="Cart" ToRole="Customer_info" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Cart__ProId__339FAB6E" FromRole="Cart" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CatId" />
+          </Key>
+          <Property Name="CatId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CatName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="catDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Categorie__ProId__60A75C0F" FromRole="Categories" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Customer_info">
+          <Key>
+            <PropertyRef Name="CusId" />
+          </Key>
+          <Property Name="CusId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="First_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Last_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Carts" Relationship="Self.FK__Cart__CusId__32AB8735" FromRole="Customer_info" ToRole="Cart" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Customer___CusId__2645B050" FromRole="Customer_info" ToRole="Users" />
+          <NavigationProperty Name="Feedback" Relationship="Self.FK__Feedback__CusId__2DE6D218" FromRole="Customer_info" ToRole="Feedback" />
+          <NavigationProperty Name="Orders_Details" Relationship="Self.FK__Orders_De__CusId__395884C4" FromRole="Customer_info" ToRole="Orders_Details" />
+          <NavigationProperty Name="Payments" Relationship="Self.FK__Payment__CusId__367C1819" FromRole="Customer_info" ToRole="Payment" />
+        </EntityType>
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="CusId" />
+          </Key>
+          <Property Name="CusId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Comment" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Customer_info" Relationship="Self.FK__Feedback__CusId__2DE6D218" FromRole="Feedback" ToRole="Customer_info" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Feedback__ProId__2EDAF651" FromRole="Feedback" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Orders_Details">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CusId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="OrderDate" Type="DateTime" Precision="3" />
+          <Property Name="ShippedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ShipName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ShipAddress" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ShipCity" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ShipPostalCode" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Customer_info" Relationship="Self.FK__Orders_De__CusId__395884C4" FromRole="Orders_Details" ToRole="Customer_info" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="Payment_Id" />
+          </Key>
+          <Property Name="Payment_Id" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CusId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Payment_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Customer_info" Relationship="Self.FK__Payment__CusId__367C1819" FromRole="Payment" ToRole="Customer_info" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProId" />
+          </Key>
+          <Property Name="ProId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ProPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Stock" Type="Int32" />
+          <NavigationProperty Name="Carts" Relationship="Self.FK__Cart__ProId__339FAB6E" FromRole="Product" ToRole="Cart" />
+          <NavigationProperty Name="Categories" Relationship="Self.FK__Categorie__ProId__60A75C0F" FromRole="Product" ToRole="Categories" />
+          <NavigationProperty Name="Feedbacks" Relationship="Self.FK__Feedback__ProId__2EDAF651" FromRole="Product" ToRole="Feedback" />
+        </EntityType>
+        <EntityType Name="Sports_Info">
+          <Key>
+            <PropertyRef Name="SpoId" />
+          </Key>
+          <Property Name="SpoId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SpoName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SpoCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SpoGears" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SpoDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserLogin">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="Self.FK__UserLogin__UserI__3F115E1A" FromRole="UserLogin" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="first_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="last_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserMobile" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Customer_info" Relationship="Self.FK__Customer___CusId__2645B050" FromRole="Users" ToRole="Customer_info" />
+          <NavigationProperty Name="UserLogin" Relationship="Self.FK__UserLogin__UserI__3F115E1A" FromRole="Users" ToRole="UserLogin" />
+        </EntityType>
+        <Association Name="FK__Cart__CusId__32AB8735">
+          <End Role="Customer_info" Type="Self.Customer_info" Multiplicity="0..1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer_info">
+              <PropertyRef Name="CusId" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="CusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cart__ProId__339FAB6E">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProId" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="ProId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Categorie__ProId__60A75C0F">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Categories" Type="Self.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProId" />
+            </Principal>
+            <Dependent Role="Categories">
+              <PropertyRef Name="ProId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Customer___CusId__2645B050">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Customer_info" Type="Self.Customer_info" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="Customer_info">
+              <PropertyRef Name="CusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Feedback__CusId__2DE6D218">
+          <End Role="Customer_info" Type="Self.Customer_info" Multiplicity="1" />
+          <End Role="Feedback" Type="Self.Feedback" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Customer_info">
+              <PropertyRef Name="CusId" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="CusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders_De__CusId__395884C4">
+          <End Role="Customer_info" Type="Self.Customer_info" Multiplicity="0..1" />
+          <End Role="Orders_Details" Type="Self.Orders_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer_info">
+              <PropertyRef Name="CusId" />
+            </Principal>
+            <Dependent Role="Orders_Details">
+              <PropertyRef Name="CusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Payment__CusId__367C1819">
+          <End Role="Customer_info" Type="Self.Customer_info" Multiplicity="0..1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer_info">
+              <PropertyRef Name="CusId" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="CusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Feedback__ProId__2EDAF651">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProId" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="ProId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserLogin__UserI__3F115E1A">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="UserLogin">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Sports_Zone_DbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Account_Details" EntityType="Self.Account_Details" />
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="Carts" EntityType="Self.Cart" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Customer_info" EntityType="Self.Customer_info" />
+          <EntitySet Name="Feedbacks" EntityType="Self.Feedback" />
+          <EntitySet Name="Orders_Details" EntityType="Self.Orders_Details" />
+          <EntitySet Name="Payments" EntityType="Self.Payment" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="Sports_Info" EntityType="Self.Sports_Info" />
+          <EntitySet Name="UserLogins" EntityType="Self.UserLogin" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK__Cart__CusId__32AB8735" Association="Self.FK__Cart__CusId__32AB8735">
+            <End Role="Customer_info" EntitySet="Customer_info" />
+            <End Role="Cart" EntitySet="Carts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cart__ProId__339FAB6E" Association="Self.FK__Cart__ProId__339FAB6E">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Cart" EntitySet="Carts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Categorie__ProId__60A75C0F" Association="Self.FK__Categorie__ProId__60A75C0F">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Categories" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Customer___CusId__2645B050" Association="Self.FK__Customer___CusId__2645B050">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Customer_info" EntitySet="Customer_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Feedback__CusId__2DE6D218" Association="Self.FK__Feedback__CusId__2DE6D218">
+            <End Role="Customer_info" EntitySet="Customer_info" />
+            <End Role="Feedback" EntitySet="Feedbacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders_De__CusId__395884C4" Association="Self.FK__Orders_De__CusId__395884C4">
+            <End Role="Customer_info" EntitySet="Customer_info" />
+            <End Role="Orders_Details" EntitySet="Orders_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Payment__CusId__367C1819" Association="Self.FK__Payment__CusId__367C1819">
+            <End Role="Customer_info" EntitySet="Customer_info" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Feedback__ProId__2EDAF651" Association="Self.FK__Feedback__ProId__2EDAF651">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Feedback" EntitySet="Feedbacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserLogin__UserI__3F115E1A" Association="Self.FK__UserLogin__UserI__3F115E1A">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserLogin" EntitySet="UserLogins" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Sports_Zone_DbModelStoreContainer" CdmEntityContainer="Sports_Zone_DbEntities">
+          <EntitySetMapping Name="Account_Details">
+            <EntityTypeMapping TypeName="Sports_Zone_DbModel.Account_Details">
+              <MappingFragment StoreEntitySet="Account_Details">
+                <ScalarProperty Name="AccName" ColumnName="AccName" />
+                <ScalarProperty Name="AccPassword" ColumnName="AccPassword" />
+                <ScalarProperty Name="AccPhone" ColumnName="AccPhone" />
+                <ScalarProperty Name="AccAddress" ColumnName="AccAddress" />
+                <ScalarProperty Name="AccEmail" ColumnName="AccEmail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="Sports_Zone_DbModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="AdmId" ColumnName="AdmId" />
+                <ScalarProperty Name="AdmName" ColumnName="AdmName" />
+                <ScalarProperty Name="AdmEmail" ColumnName="AdmEmail" />
+                <ScalarProperty Name="AdmPassword" ColumnName="AdmPassword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Carts">
+            <EntityTypeMapping TypeName="Sports_Zone_DbModel.Cart">
+              <MappingFragment StoreEntitySet="Cart">
+                <ScalarProperty Name="CarId" ColumnName="CarId" />
+                <ScalarProperty Name="ProId" ColumnName="ProId" />
+                <ScalarProperty Name="CusId" ColumnName="CusId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="Sports_Zone_DbModel.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="CatId" ColumnName="CatId" />
+                <ScalarProperty Name="CatName" ColumnName="CatName" />
+                <ScalarProperty Name="ProId" ColumnName="ProId" />
+                <ScalarProperty Name="catDescription" ColumnName="catDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer_info">
+            <EntityTypeMapping TypeName="Sports_Zone_DbModel.Customer_info">
+              <MappingFragment StoreEntitySet="Customer_info">
+                <ScalarProperty Name="CusId" ColumnName="CusId" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Feedbacks">
+            <EntityTypeMapping TypeName="Sports_Zone_DbModel.Feedback">
+              <MappingFragment StoreEntitySet="Feedback">
+                <ScalarProperty Name="CusId" ColumnName="CusId" />
+                <ScalarProperty Name="ProId" ColumnName="ProId" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders_Details">
+            <EntityTypeMapping TypeName="Sports_Zone_DbModel.Orders_Details">
+              <MappingFragment StoreEntitySet="Orders_Details">
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="CusId" ColumnName="CusId" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="ShippedDate" ColumnName="ShippedDate" />
+                <ScalarProperty Name="ShipName" ColumnName="ShipName" />
+                <ScalarProperty Name="ShipAddress" ColumnName="ShipAddress" />
+                <ScalarProperty Name="ShipCity" ColumnName="ShipCity" />
+                <ScalarProperty Name="ShipPostalCode" ColumnName="ShipPostalCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="Sports_Zone_DbModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="Payment_Id" ColumnName="Payment_Id" />
+                <ScalarProperty Name="CusId" ColumnName="CusId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Payment_Date" ColumnName="Payment_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="Sports_Zone_DbModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ProId" ColumnName="ProId" />
+                <ScalarProperty Name="ProName" ColumnName="ProName" />
+                <ScalarProperty Name="ProDescription" ColumnName="ProDescription" />
+                <ScalarProperty Name="ProPrice" ColumnName="ProPrice" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sports_Info">
+            <EntityTypeMapping TypeName="Sports_Zone_DbModel.Sports_Info">
+              <MappingFragment StoreEntitySet="Sports_Info">
+                <ScalarProperty Name="SpoId" ColumnName="SpoId" />
+                <ScalarProperty Name="SpoName" ColumnName="SpoName" />
+                <ScalarProperty Name="SpoCategory" ColumnName="SpoCategory" />
+                <ScalarProperty Name="SpoGears" ColumnName="SpoGears" />
+                <ScalarProperty Name="SpoDescription" ColumnName="SpoDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserLogins">
+            <EntityTypeMapping TypeName="Sports_Zone_DbModel.UserLogin">
+              <MappingFragment StoreEntitySet="UserLogin">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Sports_Zone_DbModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="UserAddress" ColumnName="UserAddress" />
+                <ScalarProperty Name="UserMobile" ColumnName="UserMobile" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
