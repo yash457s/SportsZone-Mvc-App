@@ -226,6 +226,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="searchbyname" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="text" Type="nvarchar" Mode="In" />
+  </Function>
   <EntityContainer Name="Sports_Zone_DbModelStoreContainer">
     <EntitySet Name="Account_Details" EntityType="Self.Account_Details" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />

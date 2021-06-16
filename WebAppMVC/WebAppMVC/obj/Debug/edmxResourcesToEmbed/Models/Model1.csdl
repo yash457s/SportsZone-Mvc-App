@@ -293,5 +293,18 @@
       <End Role="Users" EntitySet="Users" />
       <End Role="UserLogin" EntitySet="UserLogins" />
     </AssociationSet>
+    <FunctionImport Name="searchbyname" ReturnType="Collection(Sports_Zone_DbModel.searchbyname_Result)">
+      <Parameter Name="text" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Search">
+      <Parameter Name="text" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
+  <ComplexType Name="searchbyname_Result">
+    <Property Type="String" Name="ProId" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="ProName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ProDescription" Nullable="true" MaxLength="200" />
+    <Property Type="Decimal" Name="ProPrice" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="Stock" Nullable="true" />
+  </ComplexType>
 </Schema>

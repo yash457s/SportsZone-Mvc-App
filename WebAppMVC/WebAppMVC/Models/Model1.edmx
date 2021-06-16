@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Sports_Zone_DbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Sports_Zone_DbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Account_Details">
           <Key>
             <PropertyRef Name="AccName" />
@@ -231,6 +231,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="searchbyname" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="text" Type="nvarchar" Mode="In" />
+        </Function>
         <EntityContainer Name="Sports_Zone_DbModelStoreContainer">
           <EntitySet Name="Account_Details" EntityType="Self.Account_Details" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
@@ -281,8 +284,7 @@
             <End Role="UserLogin" EntitySet="UserLogin" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Sports_Zone_DbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -579,7 +581,20 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="UserLogin" EntitySet="UserLogins" />
           </AssociationSet>
+          <FunctionImport Name="searchbyname" ReturnType="Collection(Sports_Zone_DbModel.searchbyname_Result)">
+            <Parameter Name="text" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Search">
+            <Parameter Name="text" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="searchbyname_Result">
+          <Property Type="String" Name="ProId" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="ProName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ProDescription" Nullable="true" MaxLength="200" />
+          <Property Type="Decimal" Name="ProPrice" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="Stock" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -716,6 +731,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="searchbyname" FunctionName="Sports_Zone_DbModel.Store.searchbyname">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Sports_Zone_DbModel.searchbyname_Result">
+                <ScalarProperty Name="ProId" ColumnName="ProId" />
+                <ScalarProperty Name="ProName" ColumnName="ProName" />
+                <ScalarProperty Name="ProDescription" ColumnName="ProDescription" />
+                <ScalarProperty Name="ProPrice" ColumnName="ProPrice" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search" FunctionName="Sports_Zone_DbModel.Store.searchbyname" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

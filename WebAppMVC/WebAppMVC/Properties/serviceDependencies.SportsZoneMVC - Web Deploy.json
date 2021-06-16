@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/sportszone123/databases/Sports_Zone_Db",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:sportszone123.database.windows.net",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}

@@ -10,7 +10,7 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body style=" background-image: src(~/Images/light-background.jpg); background-repeat:no-repeat; background-size:contain">
+<body style=" background-color:lightyellow">
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-sm-6 col-xs-6">
@@ -25,8 +25,8 @@
                     <ul>
                         <li>
                             <div class="hidden-xs">
-                                <img style="height: 80px; width: 80px; border: 2px solid black; border-radius: 3px " src="~/Images/cart.png" />
-
+                                <img style="height: 80px; width: 80px; border: 2px solid black; border-radius: 3px; display:block " src="~/Images/cart.png" />
+                            @Html.ActionLink("Cart", "Index", "Cart");
                             </div>
 
                           
@@ -45,9 +45,11 @@
                         <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
                         <li>@Html.ActionLink("About", "About", "Home")</li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                        <li>@Html.ActionLink("Admin_Login", "SignIn", "Admins")</li> 
+                        <li>@Html.ActionLink("Admin_Login", "SignIn", "Admins")</li>
                         <li>@Html.ActionLink("User_Login", "UserSignIn", "Users")</li>
                         <li>@Html.ActionLink("Register", "Create", "Users")</li>
+                        <li>@Html.ActionLink("Products", "Index", "Products")</li>
+                        <li>@Html.ActionLink("Add_Products", "Create", "Products")</li>
                         <li>
                             <form class="form-inline my-2 my-lg-0">
                                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -75,9 +77,18 @@
                     <div class="col-md-6 col-sm-6 copyright-right">
 
                         <ul class="list-unstyled list-social">
-                            <li><a href="#" target="_blank"><i class="fa fa-facebook-square"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li>
+                                <a href="#" target="_blank"><i class="fa fa-facebook-square"><img style="height:30px; width:30px" src="~/Images/facebook-512.png" /></i></a>
+                               
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-twitter"> <img style="height:30px; width:30px" src="~/Images/free-twitter-logo-icon-2429-thumb.png" /></i></a>
+                               
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-google-plus"> <img style="height:30px; width:30px" src="~/Images/google.png" /></i></a>
+                                
+                            </li>
 
                         </ul>
                     </div>

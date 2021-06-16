@@ -12,6 +12,8 @@ namespace WebAppMVC.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class Sports_Zone_DbEntities : DbContext
     {
@@ -37,5 +39,23 @@ namespace WebAppMVC.Models
         public virtual DbSet<Sports_Info> Sports_Info { get; set; }
         public virtual DbSet<UserLogin> UserLogins { get; set; }
         public virtual DbSet<User> Users { get; set; }
+    
+        public virtual ObjectResult<searchbyname_Result> searchbyname(string text)
+        {
+            var textParameter = text != null ?
+                new ObjectParameter("text", text) :
+                new ObjectParameter("text", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<searchbyname_Result>("searchbyname", textParameter);
+        }
+    
+        public virtual int Search(string text)
+        {
+            var textParameter = text != null ?
+                new ObjectParameter("text", text) :
+                new ObjectParameter("text", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Search", textParameter);
+        }
     }
 }
