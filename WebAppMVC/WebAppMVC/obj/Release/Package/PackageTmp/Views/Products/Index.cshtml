@@ -5,39 +5,39 @@
 }
 
 @*@using (Html.BeginForm("Index","Search",FormMethod.Post))
-{
-    <span>Enter Product : </span>@Html.TextBox("text")
-    <input type="submit" value="Search Products" />
+    {
+        <span>Enter Product : </span>@Html.TextBox("text")
+        <input type="submit" value="Search Products" />
 
-}*@
+    }*@
 @foreach (var item in Model)
 {
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="ibox">
-                <div class="ibox-content product-box">
-                    <div class="product-imitation">
-                        <img scr="@Url.Content("~/Upload/"+item.ProPic)" />
-                    </div>
-                    <div class="product-desc">
-                        <span class="product-price">
-                            @Html.DisplayFor(modelItem => item.ProPrice)
-                        </span>
-                        <small class="text-muted"> Stock: @Html.DisplayFor(modelItem => item.Stock)</small>
-                        <a href="#" class="product-name"> @Html.DisplayFor(modelItem => item.ProName)</a>
-
-                        <div class="small m-t-xs">
-                            @Html.DisplayFor(modelItem => item.ProDescription)
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="ibox">
+                    <div class="ibox-content product-box">
+                        <div class="product-imitation">
+                            <img scr="@Url.Content("~/Upload/" + item.ProPic)" />
                         </div>
-                        <div class="m-t text-righ">
+                        <div class="product-desc">
+                            <span class="product-price">
+                                @Html.DisplayFor(modelItem => item.ProPrice)
+                            </span>
+                            <small class="text-muted"> Stock: @Html.DisplayFor(modelItem => item.Stock)</small>
+                            <a href="#" class="product-name"> @Html.DisplayFor(modelItem => item.ProName)</a>
 
-                            <a href="#" class="btn btn-xs btn-outline btn-primary">Buy Now <i class="fa fa-long-arrow-right"></i> </a>
+                            <div class="small m-t-xs">
+                                @Html.DisplayFor(modelItem => item.ProDescription)
+                            </div>
+                            <div class="m-t text-righ">
+
+                                <a href="#" class="btn btn-xs btn-outline btn-primary">Buy Now <i class="fa fa-long-arrow-right"></i> </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
     </div>
-        }
+}
