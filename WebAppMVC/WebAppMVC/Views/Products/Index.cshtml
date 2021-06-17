@@ -1,58 +1,43 @@
 ﻿@model IEnumerable<WebAppMVC.Models.Product>
 
 @{
-//ViewBag.Title = "Index";
+    ViewBag.Title = "Index";
 }
 
-<h2 class="text-center bg-success">Products</h2>
-
-<p>
-    @*@Html.ActionLink("Create New", "Create")*@
-</p>
-
-@using (Html.BeginForm("Index1", "Products", FormMethod.Post))
+@*@using (Html.BeginForm("Index","Search",FormMethod.Post))
 {
-    <span>Product Name:</span>@Html.TextBox("text")
-    <input type="submit" value="Search"/>
-}
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ProName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProDescription)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProPrice)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Stock)
-        </th>
-        <th></th>
-    </tr>
+    <span>Enter Product : </span>@Html.TextBox("text")
+    <input type="submit" value="Search Products" />
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProName)
-        </td>
-        <td>
-           <img scr="@Url.Content(item.ProDescription)" alt="item.AlternateText" />
-            @*@Html.DisplayFor(modelItem => item.ProDescription)*@
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProPrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Stock)
-        </td>
-        @*<td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProId })
-        </td>*@
-    </tr>
-}
+}*@
+@foreach (var item in Model)
+{
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="ibox">
+                <div class="ibox-content product-box">
+                    <div class="product-imitation">
+                        <img scr="@Url.Content("~/Upload/"+item.ProPic)" />
+                    </div>
+                    <div class="product-desc">
+                        <span class="product-price">
+                            @Html.DisplayFor(modelItem => item.ProPrice)
+                        </span>
+                        <small class="text-muted"> Stock: @Html.DisplayFor(modelItem => item.Stock)</small>
+                        <a href="#" class="product-name"> @Html.DisplayFor(modelItem => item.ProName)</a>
 
-</table>
+                        <div class="small m-t-xs">
+                            @Html.DisplayFor(modelItem => item.ProDescription)
+                        </div>
+                        <div class="m-t text-righ">
+
+                            <a href="#" class="btn btn-xs btn-outline btn-primary">Buy Now <i class="fa fa-long-arrow-right"></i> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+        }

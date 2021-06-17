@@ -88,6 +88,7 @@
     <Property Name="ProDescription" Type="nvarchar" MaxLength="200" />
     <Property Name="ProPrice" Type="money" />
     <Property Name="Stock" Type="int" />
+    <Property Name="ProPic" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="Sports_Info">
     <Key>

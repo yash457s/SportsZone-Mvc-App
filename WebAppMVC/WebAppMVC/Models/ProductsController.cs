@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using WebAppMVC.Filter;
+
 
 namespace WebAppMVC.Models
 {
@@ -17,20 +18,9 @@ namespace WebAppMVC.Models
         // GET: Products
         public ActionResult Index()
         {
-
             return View(db.Products.ToList());
         }
-        public ActionResult Index1()
-        {
 
-            return View(db.Search(""));
-        }
-
-        [HttpPost]
-        public ActionResult Index(string text)
-        {
-            return View(db.Search(text));
-         }
         // GET: Products/Details/5
         public ActionResult Details(string id)
         {
@@ -47,7 +37,6 @@ namespace WebAppMVC.Models
         }
 
         // GET: Products/Create
-    
         public ActionResult Create()
         {
             return View();
@@ -58,11 +47,14 @@ namespace WebAppMVC.Models
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-    
-        public ActionResult Create([Bind(Include = "ProId,ProName,ProDescription,ProPrice,Stock")] Product product)
+        public ActionResult Create([Bind(Include = "ProId,ProName,ProDescription,ProPrice,Stock,ProPic")] Product product, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
+                string filename = Path.GetFileName(file.FileName);
+                string upath = Path.Combine(Server.MapPath("~/Upload"), filename);
+                file.SaveAs(upath);
+                product.ProPic = filename;
                 db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -91,10 +83,11 @@ namespace WebAppMVC.Models
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProId,ProName,ProDescription,ProPrice,Stock")] Product product)
+        public ActionResult Edit([Bind(Include = "ProId,ProName,ProDescription,ProPrice,Stock,ProPic")] Product product)
         {
             if (ModelState.IsValid)
             {
+
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

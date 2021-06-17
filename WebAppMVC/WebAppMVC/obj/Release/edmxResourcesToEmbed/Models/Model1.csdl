@@ -103,6 +103,7 @@
     <NavigationProperty Name="Carts" Relationship="Self.FK__Cart__ProId__339FAB6E" FromRole="Product" ToRole="Cart" />
     <NavigationProperty Name="Categories" Relationship="Self.FK__Categorie__ProId__60A75C0F" FromRole="Product" ToRole="Categories" />
     <NavigationProperty Name="Feedbacks" Relationship="Self.FK__Feedback__ProId__2EDAF651" FromRole="Product" ToRole="Feedback" />
+    <Property Name="ProPic" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Sports_Info">
     <Key>

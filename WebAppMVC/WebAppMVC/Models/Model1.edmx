@@ -93,6 +93,7 @@
           <Property Name="ProDescription" Type="nvarchar" MaxLength="200" />
           <Property Name="ProPrice" Type="money" />
           <Property Name="Stock" Type="int" />
+          <Property Name="ProPic" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Sports_Info">
           <Key>
@@ -391,6 +392,7 @@
           <NavigationProperty Name="Carts" Relationship="Self.FK__Cart__ProId__339FAB6E" FromRole="Product" ToRole="Cart" />
           <NavigationProperty Name="Categories" Relationship="Self.FK__Categorie__ProId__60A75C0F" FromRole="Product" ToRole="Categories" />
           <NavigationProperty Name="Feedbacks" Relationship="Self.FK__Feedback__ProId__2EDAF651" FromRole="Product" ToRole="Feedback" />
+          <Property Name="ProPic" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Sports_Info">
           <Key>
@@ -582,10 +584,10 @@
             <End Role="UserLogin" EntitySet="UserLogins" />
           </AssociationSet>
           <FunctionImport Name="searchbyname" ReturnType="Collection(Sports_Zone_DbModel.searchbyname_Result)">
-            <Parameter Name="text" Mode="In" Type="String" />
+          <Parameter Name="text" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Search">
-            <Parameter Name="text" Mode="In" Type="String" />
+          <Parameter Name="text" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="searchbyname_Result">
@@ -691,6 +693,7 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="Sports_Zone_DbModel.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ProPic" ColumnName="ProPic" />
                 <ScalarProperty Name="ProId" ColumnName="ProId" />
                 <ScalarProperty Name="ProName" ColumnName="ProName" />
                 <ScalarProperty Name="ProDescription" ColumnName="ProDescription" />

@@ -12,10 +12,10 @@ namespace WebAppMVC.Models
         private Sports_Zone_DbEntities db = new Sports_Zone_DbEntities();
 
         // GET: Admins
-        [OurAuthFilter]
+        //[OurAuthFilter]
         public ActionResult Index()
         {
-            return View(db.Admins.ToList());
+            return View();
         }
         [HttpGet]
         public ActionResult SignIn()
@@ -38,7 +38,7 @@ namespace WebAppMVC.Models
                     if (admin != null)
                     {
                         Session["AdminEmail"] = admin.AdmEmail;
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Admins");
 
                     }
                     else

@@ -91,6 +91,7 @@
     <EntitySetMapping Name="Products">
       <EntityTypeMapping TypeName="Sports_Zone_DbModel.Product">
         <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="ProPic" ColumnName="ProPic" />
           <ScalarProperty Name="ProId" ColumnName="ProId" />
           <ScalarProperty Name="ProName" ColumnName="ProName" />
           <ScalarProperty Name="ProDescription" ColumnName="ProDescription" />

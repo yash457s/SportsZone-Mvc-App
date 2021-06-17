@@ -11,7 +11,9 @@ namespace WebAppMVC.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Web;
+
     public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -27,6 +29,9 @@ namespace WebAppMVC.Models
         public string ProDescription { get; set; }
         public Nullable<decimal> ProPrice { get; set; }
         public Nullable<int> Stock { get; set; }
+        public string ProPic { get; set; }
+        [NotMapped]
+        public HttpPostedFile EImgFile { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cart> Carts { get; set; }
