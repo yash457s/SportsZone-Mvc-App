@@ -30,8 +30,8 @@
                     <ul>
                         <li>
                             <div class="hidden-xs">
-                                <img style="height: 80px; width: 80px; border: 2px solid black; border-radius: 3px; display:block " src="~/Images/cart.png" />
-                            @Html.ActionLink("Cart", "Index", "Cart");
+                                @*<img style="height: 80px; width: 80px; border: 2px solid black; border-radius: 3px; display:block " src="~/Images/cart.png" />
+                                <button class="btn btn-secondary">@Html.ActionLink("Cart", "Index", "Cart");</button>*@
                             </div>
 
                           
@@ -54,12 +54,15 @@
                         <li>@Html.ActionLink("User_Login", "UserSignIn", "Users")</li>
                         <li>@Html.ActionLink("Register", "Create", "Users")</li>
                         <li>@Html.ActionLink("Products", "Index", "Products")</li>
-                        <li>@Html.ActionLink("Add_Products", "Create", "Products")</li>
-                       
-                        <li>
+                        <li>@Html.ActionLink("Search Products", "Search", "Home")</li>
+
+
+
+
+<li>
                             <form class="form-inline my-2 my-lg-0">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                                @*<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>*@
                             </form>
                         </li>
                     </ul>

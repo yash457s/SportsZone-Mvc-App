@@ -7,5 +7,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAARnJNwDHEU0Cz103cHU3qPQAAAAACAAAAAAAQZgAAAAEAACAAAABZmjw26+qcBPxDrucBWjgK4aFXJBm0wJEzjffLBcFtuAAAAAAOgAAAAAIAACAAAACvNHgNg/K549mWPBhNt9RiQY1mPoO04R4Ie/6FUSJasoAAAACvPSQMMdot3NyjSEzUKHC7MzSl9NJNLBg6kbvM9N3oKnWUM8+ODJxtxHlOYxLW6eEUh2UP2s28dGLf6eFUYB4j+o4/Tx2Apwi+icIH+oNgEe0AG5TQ90ep23RF4WUB4eYLdYHoU4CQ/fUIQgB5PLbafyRHj1HOA0I7/qM1k8yJbkAAAAD4+Q5G8F2olNgsqa/UibxeTrJTGDQTskO0Tw7ZKqq1FxqpszhYjnDL2eXmbr+FkmtRraf+11awFfWnA2Qi/RM0</EncryptedPassword>
+    <_PublishTargetUrl>ftp://waws-prod-pn1-007.ftp.azurewebsites.windows.net/site/wwwroot</_PublishTargetUrl>
   </PropertyGroup>
+  <ItemGroup>
+    <File Include="Upload/bat.png">
+      <publishTime>06/17/2021 11:21:53</publishTime>
+    </File>
+    <File Include="Upload/tennis.jpg">
+      <publishTime>06/17/2021 10:47:35</publishTime>
+    </File>
+  </ItemGroup>
 </Project>

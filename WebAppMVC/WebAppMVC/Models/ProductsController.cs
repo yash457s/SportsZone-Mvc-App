@@ -54,7 +54,7 @@ namespace WebAppMVC.Models
                 string filename = Path.GetFileName(file.FileName);
                 string upath = Path.Combine(Server.MapPath("~/Upload"), filename);
                 file.SaveAs(upath);
-                product.ProPic = filename;
+               
                 db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");

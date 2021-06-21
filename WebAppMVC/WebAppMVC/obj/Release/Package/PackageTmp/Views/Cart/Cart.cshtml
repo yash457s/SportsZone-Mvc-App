@@ -1,0 +1,40 @@
+﻿
+@{
+//ViewBag.Title = "Cart";
+}
+@using WebAppMVC.Controllers
+<h2 class="text-center bg-warning">CART</h2>
+
+<table class="table table-dark table-striped">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+        <th>Remove From Cart</th>
+    </tr>
+    @{
+        decimal s =0;
+    } 
+    @foreach (Item item in (List<Item>)Session["cart"])
+    {
+        s = s + Convert.ToDecimal(item.Product.ProPrice * (item.quantity));
+<tr>
+    <td>@item.Product.ProId</td>
+    <td>@item.Product.ProName</td>
+    <td>@item.Product.ProPrice</td>
+    <td>@item.quantity</td>
+    <td>@(item.Product.ProPrice * item.quantity)</td>
+    <td><button class="btn btn-warning">@Html.ActionLink("Remove", "Delete", "Cart", new { id = item.Product.ProId }, null)</button></td>
+
+</tr>
+    }
+    <tr style="background-color:lightcoral">
+    <td>Grand Total</td>
+        <td>@s</td>
+    </tr>
+    
+</table>
+<br />
+@Html.ActionLink("Continue shopping", "Index", "Products")

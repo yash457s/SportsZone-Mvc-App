@@ -10,18 +10,21 @@
         <input type="submit" value="Search Products" />
 
     }*@
+<h2 class="text-center bg-warning">All Products</h2>
 @foreach (var item in Model)
 {
     <div class="container">
-        <div class="row">
+        <div class="row" >
             <div class="col-md-3">
                 <div class="ibox">
                     <div class="ibox-content product-box">
                         <div class="product-imitation">
-                            <img scr="@Url.Content("~/Upload/" + item.ProPic)" />
+                            <img src="~/Images/sports-balls-on-black-background_cczzxcfzx_6.5.jpg" / style="height:150px; width:150px">
+                            @*<img scr="@Url.Content("~/Upload"+item.ProPic)" style="height:70px;width:70px"/>*@
                         </div>
                         <div class="product-desc">
                             <span class="product-price">
+                                
                                 @Html.DisplayFor(modelItem => item.ProPrice)
                             </span>
                             <small class="text-muted"> Stock: @Html.DisplayFor(modelItem => item.Stock)</small>
@@ -31,8 +34,7 @@
                                 @Html.DisplayFor(modelItem => item.ProDescription)
                             </div>
                             <div class="m-t text-righ">
-
-                                <a href="#" class="btn btn-xs btn-outline btn-primary">Buy Now <i class="fa fa-long-arrow-right"></i> </a>
+                             @Html.ActionLink("Add To Cart","OrderNow","Cart", new { id= item.ProId},null)
                             </div>
                         </div>
                     </div>
