@@ -11,12 +11,18 @@ namespace WebAppMVC.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Admin
-    {
+    { 
         public string AdmId { get; set; }
+
         public string AdmName { get; set; }
+     
         public string AdmEmail { get; set; }
+       
+      
         public string AdmPassword { get; set; }
     }
 }

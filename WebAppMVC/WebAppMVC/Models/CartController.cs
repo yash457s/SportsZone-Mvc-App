@@ -23,6 +23,7 @@ namespace WebAppMVC.Models
             {
                 if (cart[i].Product.ProId == id)
                 {
+            
                     return i;
                 }    
             }
@@ -61,6 +62,14 @@ namespace WebAppMVC.Models
                 return View("cart"); 
          
 
+        }
+        public ActionResult Order()
+        {
+            return RedirectToAction("UserSignIn","Users");
+        }
+        public ActionResult CheckOut()
+        {
+            return View();
         }
     }
 }

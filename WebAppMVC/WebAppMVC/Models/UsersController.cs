@@ -54,7 +54,7 @@ namespace WebAppMVC.Models
             {
                 db.Users.Add(user);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("UserSignIn", "Users");
             }
 
             ViewBag.userId = new SelectList(db.Customer_info, "CusId", "First_Name", user.userId);
@@ -122,6 +122,11 @@ namespace WebAppMVC.Models
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult LogOut()
+        {
+            Session.Clear();
+            return RedirectToAction("Index", "Home");
+        }
         [HttpGet]
         public ActionResult UserSignIn()
         {
@@ -139,7 +144,12 @@ namespace WebAppMVC.Models
                     Models.User user = context.Users.Where(u => u.email == obj.email && u.password == obj.password).FirstOrDefault();
                     if (user != null)
                     {
-                        Session["UserEmai"] = user.email;
+                        Session["UserEmail"] = user.email;
+                        Session["UserId"] = user.userId.ToString();
+                        Session["UserFirstName"] = user.first_name.ToString();
+                        Session["UserLastName"] = user.last_name.ToString();
+                        Session["UserAddress"] = user.UserAddress.ToString();
+                        Session["UserMobile"] = user.UserMobile.ToString();
                         return RedirectToAction("Index", "Home");
                     }
                     else
@@ -149,6 +159,7 @@ namespace WebAppMVC.Models
                     }
                 }
             }
+         
         }
 
         protected override void Dispose(bool disposing)

@@ -11,6 +11,7 @@ namespace WebAppMVC.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Web;
@@ -24,16 +25,21 @@ namespace WebAppMVC.Models
             this.Categories = new HashSet<Category>();
             this.Feedbacks = new HashSet<Feedback>();
         }
-    
+  
         public string ProId { get; set; }
+     
         public string ProName { get; set; }
+ 
         public string ProDescription { get; set; }
+    
         public Nullable<decimal> ProPrice { get; set; }
+  
         public Nullable<int> Stock { get; set; }
-        [StringLength(9000)]
+        //[StringLength(9000)]
+     
         public string ProPic { get; set; }
-        [NotMapped]
-        public HttpPostedFile EImgFile { get; set;}
+        //[NotMapped]
+        //public HttpPostedFile EImgFile { get; set;}
 
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

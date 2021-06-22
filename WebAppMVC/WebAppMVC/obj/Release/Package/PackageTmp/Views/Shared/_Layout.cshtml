@@ -30,9 +30,19 @@
                     <ul>
                         <li>
                             <div class="hidden-xs">
+                                @if (Session["UserId"] != null)
+                                {
+                                    <p>Hello @Session["UserId"]</p>
+                                    @Html.ActionLink("LogOut", "LogOut", "Users")
+
+                                }
+                                else
+                                {
+                                @Html.ActionLink("User_Login", "UserSignIn", "Users")
+                                }
                                 @*<img style="height: 80px; width: 80px; border: 2px solid black; border-radius: 3px; display:block " src="~/Images/cart.png" />
-                                <button class="btn btn-secondary">@Html.ActionLink("Cart", "Index", "Cart");</button>*@
-                            </div>
+                <button class="btn btn-secondary">@Html.ActionLink("Cart", "Index", "Cart");</button>*@
+</div>
 
                           
 

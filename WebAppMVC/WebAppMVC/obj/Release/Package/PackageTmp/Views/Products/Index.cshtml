@@ -20,7 +20,7 @@
                     <div class="ibox-content product-box">
                         <div class="product-imitation">
                             <img src="~/Images/sports-balls-on-black-background_cczzxcfzx_6.5.jpg" / style="height:150px; width:150px">
-                            @*<img scr="@Url.Content("~/Upload"+item.ProPic)" style="height:70px;width:70px"/>*@
+                            @*<img scr="@Url.Content(item.ProPic)" />*@
                         </div>
                         <div class="product-desc">
                             <span class="product-price">
@@ -34,7 +34,16 @@
                                 @Html.DisplayFor(modelItem => item.ProDescription)
                             </div>
                             <div class="m-t text-righ">
-                             @Html.ActionLink("Add To Cart","OrderNow","Cart", new { id= item.ProId},null)
+                                @if (Session["UserId"] != null)
+                                {
+                                    @Html.ActionLink("Add To Cart", "OrderNow", "Cart", new { id = item.ProId }, null)
+
+                                }
+                                else
+                                {
+                                    @Html.ActionLink("Add To Cart", "Order", "Cart")
+                                }
+
                             </div>
                         </div>
                     </div>

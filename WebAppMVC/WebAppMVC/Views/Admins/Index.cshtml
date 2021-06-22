@@ -1,13 +1,13 @@
 ﻿@model WebAppMVC.Models.Admin
 
-@{
-    @*ViewBag.Title = "Index";*@
-}
+@*@{
+  
+}*@
 
-<h2 class="text-center" bg-success>Admin Page</h2>
+<h2 class="text-center bg-warning">Admin Page</h2>
 
 <div class="container">
-    @Html.ActionLink("Add Products", "Create", "Products")
+    <button class="btn btn-link"> @Html.ActionLink("Add Products", "Create", "Products")</button>  
  
 </div>
 

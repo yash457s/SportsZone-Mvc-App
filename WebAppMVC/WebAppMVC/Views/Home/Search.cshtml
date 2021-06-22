@@ -16,7 +16,7 @@
 @*<p>
     @Html.ActionLink("Create New", "Create")
 </p>*@
-<table class="table">
+<table class="table table-dark table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.ProName)
@@ -51,7 +51,16 @@
         @Html.DisplayFor(modelItem => item.Stock)
     </td>
     <td>
-        @Html.ActionLink("Add To Cart", "OrderNow", "Cart", new { id = item.ProId }, null)
+        @if (Session["UserId"] != null)
+        {
+            @Html.ActionLink("Add To Cart", "OrderNow", "Cart", new { id = item.ProId }, null)
+
+        }
+        else
+        {
+            @Html.ActionLink("Add To Cart", "Order", "Cart")
+        }
+
     </td>
 
     @*<td>
