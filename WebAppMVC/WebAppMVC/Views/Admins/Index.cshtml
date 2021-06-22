@@ -1,13 +1,23 @@
 ﻿@model WebAppMVC.Models.Admin
 
 @*@{
-  
-}*@
+
+    }*@
 
 <h2 class="text-center bg-warning">Admin Page</h2>
 
 <div class="container">
-    <button class="btn btn-link"> @Html.ActionLink("Add Products", "Create", "Products")</button>  
- 
+    <button class="btn btn-link"> @Html.ActionLink("Add Products", "Create", "Products")</button>
+
 </div>
 
+@if (Session["AdminEmail"] != null)
+{
+<p>Hello @Session["AdminEmail"] </p>
+    @Html.ActionLink("LogOut", "LogOut", "Admins")
+
+}
+else
+{
+    @Html.ActionLink("Admin_Login", "SignIn", "Admins")
+}

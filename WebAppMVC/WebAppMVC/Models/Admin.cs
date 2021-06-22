@@ -21,8 +21,8 @@ namespace WebAppMVC.Models
         public string AdmName { get; set; }
      
         public string AdmEmail { get; set; }
-       
-      
+
+        [DataType("password")]
         public string AdmPassword { get; set; }
     }
 }

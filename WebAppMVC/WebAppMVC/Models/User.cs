@@ -19,7 +19,7 @@ namespace WebAppMVC.Models
 
         public string userId { get; set; }
        
-  
+        [DataType("password")]
         public string password { get; set; }
      
         public string first_name { get; set; }

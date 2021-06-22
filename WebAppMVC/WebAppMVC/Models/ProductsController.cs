@@ -7,7 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-
+using WebAppMVC.Filter;
 
 namespace WebAppMVC.Models
 {
@@ -37,6 +37,7 @@ namespace WebAppMVC.Models
         }
 
         // GET: Products/Create
+        [OurAuthFilter]
         public ActionResult Create()
         {
             return View();
@@ -47,6 +48,7 @@ namespace WebAppMVC.Models
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [OurAuthFilter]
         public ActionResult Create([Bind(Include = "ProId,ProName,ProDescription,ProPrice,Stock,ProPic")] Product product, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)

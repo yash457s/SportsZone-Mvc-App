@@ -44,6 +44,7 @@ namespace WebAppMVC.Models
                 List<Item> cart = new List<Item>();
                 cart.Add(new Item(db.Products.Find(id), 1));
                 Session["cart"] = cart;
+               
             }
             else
             {
@@ -67,8 +68,10 @@ namespace WebAppMVC.Models
         {
             return RedirectToAction("UserSignIn","Users");
         }
+        
         public ActionResult CheckOut()
         {
+           
             return View();
         }
     }
